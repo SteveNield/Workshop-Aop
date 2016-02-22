@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using Castle.Core.Logging;
 
@@ -118,7 +119,9 @@ namespace Workshop.Aop.Calculator.Logging
 
         public void Info(string message)
         {
-            File.WriteAllText(@"c:\\temp\\log.log", message);
+            var logFileName = ConfigurationManager.AppSettings.Get("LogFileName");
+            
+            File.WriteAllText(logFileName, message);
         }
 
         public void Info(Func<string> messageFactory)

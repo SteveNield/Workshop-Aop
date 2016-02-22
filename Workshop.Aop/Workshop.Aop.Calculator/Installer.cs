@@ -1,11 +1,10 @@
-﻿using System;
-using Castle.Core;
-using Castle.Core.Logging;
+﻿using Castle.Core.Logging;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Workshop.Aop.Calculator.Logging;
 
-namespace Workshop.Aop.Calculator.Logging
+namespace Workshop.Aop.Calculator
 {
     public class Installer : IWindsorInstaller
     {

@@ -14,7 +14,7 @@ namespace Workshop.Aop.Calculator.Logging
 
         public void Intercept(IInvocation invocation)
         {
-            _logger.Info($"m_inv:{invocation.Method.Name}");
+            _logger.Info($"m_inv:{invocation.Method.Name},m_args:{string.Join(",", invocation.Arguments)}");
 
             invocation.Proceed();
         }

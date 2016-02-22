@@ -11,15 +11,16 @@ namespace Workshop.Aop.Test.Unit
     public class LoggingAspectTests
     {
         [Test]
-        public void Logs_Method_Name_Before_Invocation()
+        public void Logs_Method_Name_With_Arguments_Before_Invocation()
         {
-            var expectedLogMessage = "m_inv:Test Method";
+            var expectedLogMessage = "m_inv:Test Method,m_args:1,2";
 
             var invokedMethodInfo = new Mock<MethodInfo>();
             invokedMethodInfo.Setup(m => m.Name).Returns("Test Method");
 
             var invocation = new Mock<IInvocation>();
             invocation.Setup(m => m.Method).Returns(invokedMethodInfo.Object);
+            invocation.Setup(m => m.Arguments).Returns(new object[] { 1, 2 });
 
             var logger = new Mock<ILogger>();
             logger.Setup(m => m.Info(It.IsAny<string>()));
